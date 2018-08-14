@@ -1,6 +1,7 @@
 import React from 'react'
 import Tables from './tables'
 import db from './../../../db/db.json'
+import Nav from './../../navbar/nav'
 
 export default class App extends React.Component {
 	state = {
@@ -14,6 +15,7 @@ export default class App extends React.Component {
 	render() {
 		return (
 			<section>
+				<Nav route="/reports" title="Ventas"/>
 				<Tables db={this.state.db}/>
 			</section>
 		)

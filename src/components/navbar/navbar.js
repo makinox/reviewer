@@ -4,6 +4,7 @@ import { Collapse, Navbar, NavbarToggler, Nav, UncontrolledDropdown, DropdownIte
 import './index.css'
 
 import Indes from './../index/index'
+import Reports from './../reports/index'
 
 export default (props) => (
   <Router>
@@ -15,7 +16,7 @@ export default (props) => (
           <Collapse isOpen={props.open} navbar>
                 <Nav className="ml-auto" navbar>
 
-                  <Link className="nav-link" to="/sells">Ventas</Link>
+                  <Link className="nav-link" to="/">Ventas</Link>
                   <Link className="nav-link" to="/reports">Reportes</Link>
 
                   {/* Informacion de la empresa */}
@@ -38,6 +39,7 @@ export default (props) => (
         </div>
       </Navbar>
       <Route exact path="/" component={Indes} />
+      <Route exact path="/reports" component={Reports} />
     </div>
   </Router>
 )

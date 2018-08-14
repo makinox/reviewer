@@ -11,6 +11,7 @@ export default (props) => (
                                 <th scope="col">#</th>
                                 <th scope="col">Number</th>
                                 <th scope="col">Hora</th>
+                                <th scope="col">Fecha</th>
                                 <th scope="col">Valor</th>
                                 <th scope="col">Descripcion</th>
                                 <th scope="col">Qty</th>
@@ -24,6 +25,7 @@ export default (props) => (
                                         <tr key={sell.Check['CheckNumber']}>
                                             <th scope="row">{sell.Check['CheckNumber']}</th>
                                             <td>{sell.Articulos.Item[0].Id}</td>
+                                            <td>{sell.Check['OpenTime'].split('T')[1]}</td>
                                             <td>{sell.Check['OpenTime'].split('T')[0]}</td>
                                             <td>{sell.Articulos.Item[2].Amount}</td>
                                             <td>{sell.Articulos.Item[1].Description}</td>
