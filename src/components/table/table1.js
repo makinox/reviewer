@@ -1,4 +1,5 @@
 import React from 'react'
+import './table.css'
 
 export default (props) => (
     <section>
@@ -8,7 +9,7 @@ export default (props) => (
                     <table className="table table-striped table-hover table-responsive-sm table-bordered mt-5">
                         <thead>
                             <tr className="thead-dark">
-                                <th scope="col">#</th>
+                                <th scope="col" className="CheckNumber" onClick={props.reverse}>#</th>
                                 <th scope="col">Number</th>
                                 <th scope="col">Hora</th>
                                 <th scope="col">Fecha</th>
