@@ -10,19 +10,24 @@ export default class App extends React.Component {
 	}
 
 	componentDidMount(){
-		console.log(this.state.db)
+		// console.log(this.state.db)
 	}
 
-	sortingz = (a,b,c,d = false,e = false,f = false) => {
+	sortingz = (a,b,c,d = false,e = false,f = false, len = false) => {
 		let nameB
 		let nameA
-		if (c && d){
+		if (len === 2){
 			nameB = b[`${c}`][`${d}`].toUpperCase()
 			nameA = a[`${c}`][`${d}`].toUpperCase()
-		} else if (d && e){
-			nameB = b[`${c}`][`${d}`][`${e}`].toUpperCase()
-			nameA = a[`${c}`][`${d}`][`${e}`].toUpperCase()
-		} else if (d && e && f){
+		} else if (len === 3){
+			if (e === 'hora'){
+				nameB = b[`${c}`][`${d}`].toUpperCase().split('T')[1]
+				nameA = a[`${c}`][`${d}`].toUpperCase().split('T')[1]
+			}else if (e === 'fecha'){
+				nameB = b[`${c}`][`${d}`].toUpperCase().split('T')[0]
+				nameA = a[`${c}`][`${d}`].toUpperCase().split('T')[0]
+			}
+		} else if (len === 4){
 			nameB = b[`${c}`][`${d}`][`${e}`][`${f}`].toUpperCase()
 			nameA = a[`${c}`][`${d}`][`${e}`][`${f}`].toUpperCase()
 		} else {
@@ -38,16 +43,21 @@ export default class App extends React.Component {
 		return 0
 	}
 
-	sortingx = (a,b,c,d = false,e = false,f = false) => {
+	sortingx = (a,b,c,d = false,e = false,f = false, len = false) => {
 		let nameB
 		let nameA
-		if (c && d){
+		if (len === 2){
 			nameB = b[`${c}`][`${d}`].toUpperCase()
 			nameA = a[`${c}`][`${d}`].toUpperCase()
-		} else if (d && e){
-			nameB = b[`${c}`][`${d}`][`${e}`].toUpperCase()
-			nameA = a[`${c}`][`${d}`][`${e}`].toUpperCase()
-		} else if (d && e && f){
+		} else if (len === 3){
+			if (e === 'hora'){
+				nameB = b[`${c}`][`${d}`].toUpperCase().split('T')[1]
+				nameA = a[`${c}`][`${d}`].toUpperCase().split('T')[1]
+			}else if (e === 'fecha'){
+				nameB = b[`${c}`][`${d}`].toUpperCase().split('T')[0]
+				nameA = a[`${c}`][`${d}`].toUpperCase().split('T')[0]
+			}
+		} else if (len === 4){
 			nameB = b[`${c}`][`${d}`][`${e}`][`${f}`].toUpperCase()
 			nameA = a[`${c}`][`${d}`][`${e}`][`${f}`].toUpperCase()
 		} else {
@@ -63,26 +73,30 @@ export default class App extends React.Component {
 		return 0
 	}
 
-	reverse = (e) => {
-		const {className} = e.target
+	reverse = (x) => {
+		const {className} = x.target
 		let metaObjects = className.split(' ')
-		console.log(metaObjects.length)
+		let c = metaObjects[0] || false
+		let d = metaObjects[1] || false
+		let e = metaObjects[2] || false
+		let f = metaObjects[3] || false
+		let len = metaObjects.length || false
 
-		// if (this.state.reverse){
-		// 	this.setState({
-		// 		db: this.state.db.sort((a,b) => {
-		// 			return this.sortingz(a,b,className)
-		// 		}),
-		// 		reverse: false
-		// 	})
-		// } else {
-		// 	this.setState({
-		// 		db: this.state.db.sort((a,b) => {
-		// 			return this.sortingx(a,b,className)
-		// 		}),
-		// 		reverse: true
-		// 	})
-		// }
+		if (this.state.reverse){
+			this.setState({
+				db: this.state.db.sort((a,b) => {
+					return this.sortingz(a,b,c,d,e,f,len)
+				}),
+				reverse: false
+			})
+		} else {
+			this.setState({
+				db: this.state.db.sort((a,b) => {
+					return this.sortingx(a,b,c,d,e,f,len)
+				}),
+				reverse: true
+			})
+		}
 	}
 
 	render() {

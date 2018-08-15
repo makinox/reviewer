@@ -9,14 +9,14 @@ export default (props) => (
                     <table className="table table-striped table-hover table-responsive-sm table-bordered mt-5">
                         <thead>
                             <tr className="thead-dark">
-                                <th scope="col" className="CheckNumber" onClick={props.reverse}>#</th>
-                                <th scope="col">Number</th>
-                                <th scope="col">Hora</th>
-                                <th scope="col">Fecha</th>
-                                <th scope="col">Valor</th>
-                                <th scope="col">Descripcion</th>
-                                <th scope="col">Qty</th>
-                                <th scope="col">Medio</th>
+                                <th scope="col" className="Check CheckNumber" onClick={props.reverse}>#</th>
+                                <th scope="col" className="Articulos Item 0 Id" onClick={props.reverse}>Number</th>
+                                <th scope="col" className="Check OpenTime hora" onClick={props.reverse}>Hora</th>
+                                <th scope="col" className="Check OpenTime fecha" onClick={props.reverse}>Fecha</th>
+                                <th scope="col" className="Articulos Item 2 Amount" onClick={props.reverse}>Valor</th>
+                                <th scope="col" className="Articulos Item 1 Description" onClick={props.reverse}>Descripcion</th>
+                                <th scope="col" className="Articulos Item 1 Qty" onClick={props.reverse}>Qty</th>
+                                <th scope="col" className="Articulos Item 2 Name" onClick={props.reverse}>Medio</th>
                             </tr>
                         </thead>
                         <tbody>
